@@ -42,6 +42,8 @@ Game.prototype.getData = function() {
 Game.prototype.connect = function(id) {
   this.users[id] = new User(0, 0);
 
+  this.server.health(id, this.users[id].health);
+  this.server.score(id, this.users[id].score);
   this.server.color(id, this.users[id].color);
   this.server.vibrate(id, 200);
 };

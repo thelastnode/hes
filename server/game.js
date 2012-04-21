@@ -35,7 +35,7 @@ Game.prototype.tick = function(delta) {
     var user = this.users[id];
 
     // handle velocity
-    user.point = addV(user.point, scaleV(6, user.velocity));
+    user.point = addV(user.point, scaleV(8, user.velocity));
     if (magV(user.velocity) > 0.1) {
       user.velocity = scaleV(0.98, user.velocity);
     }

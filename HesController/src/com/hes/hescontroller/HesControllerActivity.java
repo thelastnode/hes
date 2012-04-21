@@ -35,6 +35,7 @@ public class HesControllerActivity extends Activity {
 	private Vibrator v;
 	private TextView healthTv;
 	private TextView scoreTv;
+	private Joysticks joys;
 	private int health = 3;
 	private int score = 0;
 	
@@ -74,7 +75,7 @@ public class HesControllerActivity extends Activity {
           }
         }).start();
         
-        final Joysticks joys = (Joysticks) findViewById(R.id.joysticks);
+        joys = (Joysticks) findViewById(R.id.joysticks);
         healthTv = (TextView) findViewById(R.id.health);
         healthTv.setText(Html.fromHtml("&#9829;&#9829;&#9829;").toString());
         scoreTv = (TextView) findViewById(R.id.score);
@@ -146,7 +147,7 @@ public class HesControllerActivity extends Activity {
     	Log.d("HES", "ENTER");
     	if ((s = br.readLine()) != null) {
     		Log.d("HES", s);
-    		JSONObject j = new JSONObject(s);
+    		final JSONObject j = new JSONObject(s);
     		if (!j.isNull("vibrate")) {
     			v.vibrate(j.getInt("vibrate"));
     		}
@@ -156,15 +157,39 @@ public class HesControllerActivity extends Activity {
     			for (int i = 0; i < health; i++) {
     				str += "&#9829;";
     			}
-    			healthTv.setText(str);
+    			final String st = str;
+    			runOnUiThread(new Runnable() {
+    				public void run() {
+    					try {
+    						healthTv.setText(Html.fromHtml(st).toString());
+    					} catch (Exception e) {}
+    				}
+    			});
     		}
     		if (!j.isNull("dscore")) {
     			score += j.getInt("dscore");
     			String str = "" + score;
-    			for (int i = 0; i < str.length() - 8; i++) {
+    			for (int i = 0; i < 8 - str.length(); i++) {
     				str = "0" + str;
     			}
-    			scoreTv.setText(str);
+    			final String st = str;
+    			runOnUiThread(new Runnable() {
+    				public void run() {
+    					try {
+    						scoreTv.setText(st);
+    					} catch (Exception e) {}
+    				}
+    			});
+    		}
+    		if (!j.isNull("color")) {
+    			Log.d("HES", "" + j.getInt("color"));
+    			runOnUiThread(new Runnable() {
+    				public void run() {
+    					try {
+    						joys.setColor(j.getInt("color"));
+    					} catch (Exception e) {}
+    				}
+    			});
     		}
     	}
     	Log.d("HES", "EXIT");

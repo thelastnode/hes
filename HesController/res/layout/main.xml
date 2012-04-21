@@ -27,7 +27,7 @@
   		android:layout_alignParentBottom="true"
   		android:layout_alignParentRight="true"
   		android:textColor="#ffffffff"
-  		android:typeface=""
+  		android:typeface="normal"
   		android:textSize = "50sp" />
 	
 </RelativeLayout>

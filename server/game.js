@@ -10,7 +10,7 @@ var User = function(x, y, color) {
   this.color = color || randomColor();
 
   this.score = 0;
-  this.health = 100;
+  this.health = 20;
 };
 
 
@@ -21,6 +21,7 @@ var Game = module.exports = function Game(server) {
 
 Game.prototype.receiveInput = function(id, input) {
   var user = this.users[id];
+  if (!user) return;
   if (input.left) {
     user.velocity = input.left;
   }
@@ -57,6 +58,17 @@ Game.prototype.disconnect = function(id) {
 };
 
 Game.prototype.tick = function(delta) {
+  var newusers = {};
+  for (var id in this.users) {
+    if (this.users[id].health <= 0) {
+      this.server.health(id, 0);
+      this.server.disconnect(id);
+    } else {
+      newusers[id] = this.users[id];
+    }
+  }
+  this.users = newusers;
+
   for (var id in this.users) {
     var user = this.users[id];
 
@@ -132,7 +144,7 @@ Game.prototype.tick = function(delta) {
             && (b.point.y + SHIP_WIDTH >= user2.point.y)) {
           user.score += 100;
           this.server.score(id, user.score);
-          this.server.vibrate(id, 20);
+          this.server.vibrate(id, 50);
           user2.health -= 3;
           this.server.health(id2, user2.health);
           this.server.vibrate(id2, 500);
@@ -154,10 +166,10 @@ var HEIGHT = 692;
 
 var WALL_DEPTH = 1;
 var SHIP_WIDTH = 15;
-var BULLET_WIDTH = 4;
+var BULLET_WIDTH = 6;
 
-var FIRE_RATE = 200;
-var BULLET_SPEED = 10;
+var FIRE_RATE = 150;
+var BULLET_SPEED = 15;
 
 var shipsCollide = function(x1, y1, x2, y2) {
   if (x2 < x1) {

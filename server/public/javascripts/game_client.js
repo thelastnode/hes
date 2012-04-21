@@ -2,7 +2,7 @@ $(function() {
   var socket = io.connect('http://localhost:3000/');
 
   var rect_side = 15;
-  var bullet_side = 4;
+  var bullet_side = 6;
 
   var clear_canvas = function(ctx) {
     ctx.fillStyle = 'black';
@@ -28,6 +28,7 @@ $(function() {
     var x = ctx.canvas.width / 2 + b.point.x;
     var y = ctx.canvas.height / 2 - b.point.y;
     ctx.fillRect(x, y, bullet_side, bullet_side);
+    ctx.strokeRect(x, y, bullet_side, bullet_side);
   };
 
   var draw_canvas = function(data) {

@@ -60,4 +60,9 @@ Server.prototype.color = function(uid, color) {
   });
 };
 
+Server.prototype.disconnect = function(uid) {
+  this.sockets[uid].end();
+  this.sockets[uid].destroy();
+};
+
 module.exports = Server;

@@ -36,15 +36,15 @@ Server.prototype.send = function(uid, data) {
   this.sockets[uid].write(new Buffer(JSON.stringify(data), 'ascii').toString('ascii') + '\n');
 };
 
-Server.prototype.dhealth = function(uid, dhealth) {
+Server.prototype.health = function(uid, health) {
   this.send(uid, {
-    dhealth: dhealth,
+    health: health,
   });
 };
 
-Server.prototype.dscore = function(uid, dscore) {
+Server.prototype.score = function(uid, score) {
   this.send(uid, {
-    dscore: dscore,
+    score: score,
   });
 };
 

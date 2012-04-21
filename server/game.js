@@ -2,7 +2,11 @@ var User = function(x, y, color) {
   this.point = {x: x, y: y};
   this.velocity = {x: 0, y: 0};
   this.bullets = [];
+  this.lastFired = new Date(0);
   this.color = color || randomColor();
+
+  this.score = 0;
+  this.health = 100;
 };
 
 
@@ -16,6 +20,19 @@ Game.prototype.receiveInput = function(id, input) {
   if (input.left) {
     user.velocity = input.left;
   }
+  if (input.right) {
+    var diff = (new Date() - user.lastFired).valueOf();
+    if (diff > FIRE_RATE) {
+      user.bullets.push({
+        point: user.point,
+        velocity: normalizeV({
+          x: input.right.x,
+          y: input.right.y,
+        }),
+      });
+      user.lastFired = new Date();
+    }
+  }
 };
 
 Game.prototype.getData = function() {
@@ -25,6 +42,8 @@ Game.prototype.getData = function() {
 Game.prototype.connect = function(id) {
   this.users[id] = new User(0, 0);
 
+  this.server.health(id, this.users[id].health);
+  this.server.score(id, this.users[id].score);
   this.server.color(id, this.users[id].color);
   this.server.vibrate(id, 200);
 };
@@ -72,6 +91,41 @@ Game.prototype.tick = function(delta) {
         this.server.vibrate(id2, 500);
       }
     }
+
+    // bullets
+    user.bullets.forEach(function(b) {
+      b.point = addV(b.point, scaleV(BULLET_SPEED, b.velocity));
+    });
+
+    // bullet collisions
+    var newbullets = [];
+    user.bullets.forEach(function(b) {
+      var absx = WIDTH/2 + user.point.x;
+      var absy = HEIGHT/2 + user.point.y;
+
+      if ((absx < WALL_DEPTH)
+          || (absx + BULLET_WIDTH > WIDTH - WALL_DEPTH)
+          || (absy < WALL_DEPTH + BULLET_WIDTH)
+          || (absy > HEIGHT - WALL_DEPTH)) {
+      } else {
+        newbullets.push(b);
+      }
+
+      // TODO: hit ships and shit
+      for (var id2 in this.users) {
+        if (id === id2) continue;
+
+        var user2 = this.users[id2];
+        if ((b.point.x >= user2.point.x)
+            && (b.point.x <= user2.point.x + SHIP_WIDTH)
+            && (b.point.y <= user2.point.y)
+            && (b.point.y + SHIP_WIDTH >= user2.point.y)) {
+          user.score += 100;
+          user2.health -= 3;
+          this.server.vibrate(id2, 1000);
+        }
+      }
+    }.bind(this));
   }
 };
 
@@ -80,6 +134,10 @@ var HEIGHT = 692;
 
 var WALL_DEPTH = 1;
 var SHIP_WIDTH = 15;
+var BULLET_WIDTH = 4;
+
+var FIRE_RATE = 200;
+var BULLET_SPEED = 10;
 
 var shipsCollide = function(x1, y1, x2, y2) {
   if (x2 < x1) {
@@ -122,6 +180,10 @@ var scaleV = function(a, v) {
 
 var magV = function(v) {
   return Math.sqrt(v.x * v.x + v.y * v.y);
+};
+
+var normalizeV = function(v) {
+  return scaleV(1 / magV(v), v);
 };
 
 

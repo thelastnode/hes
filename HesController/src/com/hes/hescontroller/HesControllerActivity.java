@@ -36,8 +36,6 @@ public class HesControllerActivity extends Activity {
 	private TextView healthTv;
 	private TextView scoreTv;
 	private Joysticks joys;
-	private int health = 0;
-	private int score = 0;
 	
     /** Called when the activity is first created. */
     @Override
@@ -154,31 +152,26 @@ public class HesControllerActivity extends Activity {
     public void receiveCommands(BufferedReader br) throws IOException, JSONException {
     	String s = null;
     	Log.d("HES", "ENTER");
-    	if ((s = br.readLine()) != null) {
+    	while ((s = br.readLine()) != null) {
     		Log.d("HES", s);
     		final JSONObject j = new JSONObject(s);
     		if (!j.isNull("vibrate")) {
     			v.vibrate(j.getInt("vibrate"));
     		}
-    		if (!j.isNull("dhealth")) {
-    			health += j.getInt("dhealth");
-    			String str = "";
-    			for (int i = 0; i < health; i++) {
-    				str += "&#9829;";
-    			}
-    			final String st = str;
+    		if (!j.isNull("health")) {
+    			Log.d("HES", Html.fromHtml("&#9829;").toString() + " x " + j.getInt("health"));
     			runOnUiThread(new Runnable() {
     				public void run() {
     					try {
-    						healthTv.setText(Html.fromHtml(st).toString());
+    						healthTv.setText(Html.fromHtml("&#9829;").toString() + " x " + j.getInt("health"));
     					} catch (Exception e) {}
     				}
     			});
     		}
-    		if (!j.isNull("dscore")) {
-    			score += j.getInt("dscore");
-    			String str = "" + score;
-    			for (int i = 0; i < 8 - str.length(); i++) {
+    		if (!j.isNull("score")) {
+    			String str = "" + j.getInt("score");
+    			int maxLen = 8 - str.length();
+    			for (int i = 0; i < maxLen; i++) {
     				str = "0" + str;
     			}
     			final String st = str;

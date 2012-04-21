@@ -7,8 +7,9 @@ var User = function(x, y, color) {
 };
 
 
-var Game = module.exports = function Game() {
+var Game = module.exports = function Game(server) {
   this.users = {};
+  this.server = server;
 };
 
 Game.prototype.receiveInput = function(id, input) {
@@ -20,11 +21,14 @@ Game.prototype.receiveInput = function(id, input) {
 };
 
 Game.prototype.getData = function() {
-  return this.users,
+  return this.users;
 };
 
 Game.prototype.connect = function(id) {
   this.users[id] = new User(0, 0);
+
+  this.server.color(id, this.users[id].color);
+  this.server.vibrate(id, 200);
 };
 
 Game.prototype.disconnect = function(id) {
@@ -48,21 +52,26 @@ Game.prototype.tick = function(delta) {
     // check walls
     if (absx < WALL_DEPTH) {
       user.point = addV(user.point, {x: WALL_DEPTH - absx, y: 0});
+      this.server.vibrate(id, 20);
     }
     if (absx + SHIP_WIDTH > WIDTH - WALL_DEPTH) {
       user.point = addV(user.point, {x: WIDTH - WALL_DEPTH - absx - SHIP_WIDTH, y: 0});
+      this.server.vibrate(id, 20);
     }
     if (absy < WALL_DEPTH + SHIP_WIDTH) {
       user.point = addV(user.point, {x: 0, y: WALL_DEPTH - absy + SHIP_WIDTH});
+      this.server.vibrate(id, 20);
     }
     if (absy > HEIGHT - WALL_DEPTH) {
       user.point = addV(user.point, {x: 0, y: HEIGHT - WALL_DEPTH - absy});
+      this.server.vibrate(id, 20);
     }
     
     // check collisions between ships
     for (var id2 in this.users) {
       if (id != id2 && shipsCollide(absx, absy, WIDTH/2 + this.users[id2].point.x, HEIGHT/2 + this.users[id2].point.y)) {
-        console.log('COLLIDE');
+        this.server.vibrate(id, 500);
+        this.server.vibrate(id2, 500);
       }
     }
   }

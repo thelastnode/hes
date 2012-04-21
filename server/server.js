@@ -3,9 +3,11 @@ var carrier = require('carrier');
 var uuid = require('node-uuid');
 
 var Server = function(connect_callback, line_callback, end_callback) {
+  var sockets = this.sockets = {};
   this.server = net.createServer(function(socket) {
     var uid = uuid.v4();
     console.log('CONNECT: %s', socket.address().address);
+    sockets[uid] = socket;
     carrier.carry(socket, function(line) {
       line = new Buffer(line, 'base64').toString('ascii');
       console.log('LINE: %s', line);
@@ -19,6 +21,7 @@ var Server = function(connect_callback, line_callback, end_callback) {
 
     socket.on('end', function() {
       end_callback(uid);
+      delete sockets[uid];
     });
 
     connect_callback(uid);
@@ -27,6 +30,34 @@ var Server = function(connect_callback, line_callback, end_callback) {
 
 Server.prototype.listen = function(port) {
   this.server.listen(port);
+};
+
+Server.prototype.send = function(uid, data) {
+  this.sockets[uid].write(new Buffer(JSON.stringify(data), 'ascii').toString('ascii') + '\n');
+};
+
+Server.prototype.dhealth = function(uid, dhealth) {
+  this.send(uid, {
+    dhealth: dhealth,
+  });
+};
+
+Server.prototype.dscore = function(uid, dscore) {
+  this.send(uid, {
+    dscore: dscore,
+  });
+};
+
+Server.prototype.vibrate = function(uid, vibrate) {
+  this.send(uid, {
+    vibrate: vibrate,
+  });
+};
+
+Server.prototype.color = function(uid, color) {
+  this.send(uid, {
+    color: parseInt('0xFF' + color),
+  });
 };
 
 module.exports = Server;

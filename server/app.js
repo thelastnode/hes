@@ -11,8 +11,6 @@ var routes = require('./routes');
 var Server = require('./server');
 var Game = require('./game');
 
-var game = new Game();
-
 var app = module.exports = express.createServer();
 
 // Configuration
@@ -54,6 +52,9 @@ var server = new Server(function(id) {
   server.listen(port);
   console.log("Game server listening on port %d", port);
 })(4000);
+
+var game = new Game(server);
+
 
 var io = socket_io.listen(app);
 

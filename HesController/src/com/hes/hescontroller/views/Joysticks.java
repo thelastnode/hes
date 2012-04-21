@@ -27,10 +27,9 @@ public class Joysticks extends View {
 		super.onDraw(canvas);
 		width = canvas.getWidth();
 		height = canvas.getHeight();
-		paint.setColor(0xFFFF0000);
+		paint.setColor(0xFF0066ff);
 		paint.setStyle(Paint.Style.FILL);
 		canvas.drawCircle(radius, canvas.getHeight() - radius, radius, paint);
-		paint.setColor(0xFFFF0000);
 		canvas.drawCircle(canvas.getWidth() - radius, radius, radius, paint);
 	}
 	

@@ -33,19 +33,29 @@ public class Joysticks extends View {
 		canvas.drawCircle(canvas.getWidth() - radius, radius, radius, paint);
 	}
 	
-	public float getLX() {
-		return radius;
+	public boolean isInLeft(float x, float y) {
+		float cX = radius, cY = height - radius;
+		return x >= cX - radius && x <= cX + radius && y >= cY - radius && y <= cY + radius;
 	}
 	
-	public float getLY() {
-		return height - radius;
+	public boolean isInRight(float x, float y) {
+		float cX = width - radius, cY = radius;
+		return x >= cX - radius && x <= cX + radius && y >= cY - radius && y <= cY + radius;
 	}
 	
-	public float getRX() {
-		return width - radius;
+	public float getLeftXCoord(float x) {
+		return 0.0f;
 	}
 	
-	public float getRY() {
-		return radius;
+	public float getLeftYCoord(float y) {
+		return 0.0f;
+	}
+	
+	public float getRightXCoord(float x) {
+		return 0.0f;
+	}
+	
+	public float getRightYCoord(float x) {
+		return 0.0f;
 	}
 }

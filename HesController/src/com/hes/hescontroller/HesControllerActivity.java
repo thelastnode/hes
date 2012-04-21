@@ -51,7 +51,7 @@ public class HesControllerActivity extends Activity {
           }
         }).start();
         
-        Joysticks joys = (Joysticks) findViewById(R.id.joysticks);
+        final Joysticks joys = (Joysticks) findViewById(R.id.joysticks);
         joys.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
 				Log.d("HES", "TOUCH EVENT");
@@ -62,15 +62,28 @@ public class HesControllerActivity extends Activity {
 					x2 = event.getX(1);
 					y2 = event.getY(1);
 				}
-//				if (joys.isInLeft()) {
-//					x = joys.getLeftCoord(x);
-//					y = joys.getRightCoord(y);
-//				}
-//				if (joys.isInRight()) {
-//					x = joys.getLeftCoord(x);
-//					y = joys.getRightCoord(y);
-//				}
-				buffer.add(toCommand(x, y, x2, y2));
+				boolean send = false;
+				if (joys.isInLeft(x, y)) {
+					send = true;
+					x = joys.getLeftXCoord(x);
+					y = joys.getLeftYCoord(y);
+				} else if (joys.isInLeft(x2, y2)) {
+					send = true;
+					x2 = joys.getLeftXCoord(x2);
+					y2 = joys.getLeftYCoord(y2);
+				}
+				if (joys.isInRight(x, y)) {
+					send = true;
+					x = joys.getRightXCoord(x);
+					y = joys.getRightYCoord(y);
+				} else if (joys.isInRight(x2, y2)) {
+					send = true;
+					x2 = joys.getRightXCoord(x2);
+					y2 = joys.getRightYCoord(y2);
+				}
+				if (send) {
+					buffer.add(toCommand(x, y, x2, y2));
+				}
 				return false;
 			}
         });

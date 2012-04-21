@@ -128,9 +128,9 @@ var magV = function(v) {
 
 
 var randomColor = function() {
-  var red = Math.floor(Math.random() * 128).toString(16);
-  var green = Math.floor(Math.random() * 128).toString(16);
-  var blue = Math.floor(Math.random() * 128).toString(16);
+  var red = Math.floor(Math.random() * 256).toString(16);
+  var green = Math.floor(Math.random() * 256).toString(16);
+  var blue = Math.floor(Math.random() * 256).toString(16);
 
   if (red.length < 2) red = '0' + red;
   if (green.length < 2) green = '0' + green;

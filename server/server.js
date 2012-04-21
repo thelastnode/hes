@@ -13,7 +13,7 @@ var Server = function(connect_callback, line_callback) {
 
       // TODO: nuke this
       if (JSON.parse(line).right) {
-        socket.write(new Buffer('{"dscore": 1}', 'ascii').toString('ascii') + '\n');
+        socket.write(new Buffer('{"dhealth": -1}', 'ascii').toString('ascii') + '\n');
       }
     });
     connect_callback(uid);

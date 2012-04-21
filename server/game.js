@@ -2,7 +2,7 @@ var User = function(x, y, color) {
   this.point = {x: x, y: y};
   this.velocity = {x: 0, y: 0};
 
-  this.color = color;
+  this.color = color || randomColor();
 };
 
 
@@ -64,7 +64,7 @@ var WIDTH = 800;
 var HEIGHT = 600;
 
 var WALL_DEPTH = 1;
-var SHIP_WIDTH = 10;
+var SHIP_WIDTH = 15;
 
 
 var addV = function(v1, v2) {
@@ -83,4 +83,17 @@ var scaleV = function(a, v) {
 
 var magV = function(v) {
   return Math.sqrt(v.x * v.x + v.y * v.y);
+};
+
+
+var randomColor = function() {
+  var red = Math.floor(Math.random() * 128).toString(16);
+  var green = Math.floor(Math.random() * 128).toString(16);
+  var blue = Math.floor(Math.random() * 128).toString(16);
+
+  if (red.length < 2) red = '0' + red;
+  if (green.length < 2) green = '0' + green;
+  if (blue.length < 2) blue = '0' + blue;
+
+  return red + green + blue;
 };

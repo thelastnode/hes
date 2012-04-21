@@ -90,7 +90,17 @@ public class HesControllerActivity extends Activity {
     }
     
     public String toCommand(float x, float y, float x2, float y2) {
-    	return "{\"left\": {\"x\":" + x + ", \"y\":" + y + "}, \"right\": {\"x\":" + x2 + ", \"y\":" + y2 + "}}";
+    	String ret = "{";
+    	if (x != 0.0f || y != 0.0f) {
+    		ret += "\"left\": {\"x\":" + x + ", \"y\":" + y + "}";
+    	}
+    	if (x2 != 0.0f || y2 != 0.0f) {
+    		if (ret.length() > 1) {
+    			ret += ", ";
+    		}
+    		ret += "\"right\": {\"x\":" + x2 + ", \"y\":" + y2 + "}";
+    	}
+    	return ret + "}";
     }
     
     

@@ -6,6 +6,8 @@
 var express = require('express')
   , routes = require('./routes');
 
+var server = require('./server');
+
 var app = module.exports = express.createServer();
 
 // Configuration
@@ -34,3 +36,7 @@ app.get('/', routes.index);
 app.listen(3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
+
+
+server.listen(4000);
+console.log("Game server listening on port %d", server.address().port);

@@ -11,11 +11,10 @@ var Server = function(connect_callback, line_callback) {
       console.log('LINE: %s', line);
       line_callback(uid, JSON.parse(line));
 
-      /*
+      // TODO: nuke this
       if (JSON.parse(line).right) {
-        socket.write(new Buffer('{"vibrate": 20}', 'ascii').toString('ascii') + '\n');
+        socket.write(new Buffer('{"color": 0xFFFF0000}', 'ascii').toString('ascii') + '\n');
       }
-      */
     });
     connect_callback(uid);
   });

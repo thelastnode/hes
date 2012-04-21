@@ -1,8 +1,12 @@
 var User = function(x, y, color) {
-  this.point = {x: x, y: y};
+  this.point = {
+    x: Math.random() * WIDTH,
+    y: Math.random() * HEIGHT,
+  };
   this.velocity = {x: 0, y: 0};
   this.bullets = [];
   this.lastFired = new Date(0);
+  this.lastCollided = new Date(0);
   this.color = color || randomColor();
 
   this.score = 0;
@@ -86,9 +90,16 @@ Game.prototype.tick = function(delta) {
     
     // check collisions between ships
     for (var id2 in this.users) {
-      if (id != id2 && shipsCollide(absx, absy, WIDTH/2 + this.users[id2].point.x, HEIGHT/2 + this.users[id2].point.y)) {
+      if ((id != id2 && shipsCollide(absx, absy, WIDTH/2 + this.users[id2].point.x, HEIGHT/2 + this.users[id2].point.y)) && ((new Date() - user.lastCollided).valueOf() >= 100)) {
         this.server.vibrate(id, 500);
         this.server.vibrate(id2, 500);
+        this.users[id].health -= 2;
+        this.server.health(id, this.users[id].health);
+        this.users[id2].health -= 2;
+        this.server.health(id2, this.users[id2].health);
+
+        user.lastCollided = new Date();
+        this.users[id2].lastCollided = new Date();
       }
     }
 
@@ -100,6 +111,7 @@ Game.prototype.tick = function(delta) {
     // bullet collisions
     var newbullets = [];
     user.bullets.forEach(function(b) {
+      var used = false;
       var absx = WIDTH/2 + user.point.x;
       var absy = HEIGHT/2 + user.point.y;
 
@@ -107,11 +119,9 @@ Game.prototype.tick = function(delta) {
           || (absx + BULLET_WIDTH > WIDTH - WALL_DEPTH)
           || (absy < WALL_DEPTH + BULLET_WIDTH)
           || (absy > HEIGHT - WALL_DEPTH)) {
-      } else {
-        newbullets.push(b);
+        used = true;
       }
 
-      // TODO: hit ships and shit
       for (var id2 in this.users) {
         if (id === id2) continue;
 
@@ -121,10 +131,20 @@ Game.prototype.tick = function(delta) {
             && (b.point.y <= user2.point.y)
             && (b.point.y + SHIP_WIDTH >= user2.point.y)) {
           user.score += 100;
+          this.server.score(id, user.score);
+          this.server.vibrate(id, 20);
           user2.health -= 3;
-          this.server.vibrate(id2, 1000);
+          this.server.health(id2, user2.health);
+          this.server.vibrate(id2, 500);
+
+          used = true;
         }
       }
+
+      if (!used) {
+        newbullets.push(b);
+      }
+      user.bullets = newbullets;
     }.bind(this));
   }
 };

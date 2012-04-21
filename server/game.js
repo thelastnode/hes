@@ -1,7 +1,6 @@
 var User = function(x, y, color) {
   this.point = {x: x, y: y};
   this.velocity = {x: 0, y: 0};
-  this.aim = {x:0, y:0};
   this.bullets = [];
   this.color = color || randomColor();
 };
@@ -17,7 +16,6 @@ Game.prototype.receiveInput = function(id, input) {
   if (input.left) {
     user.velocity = input.left;
   }
-  user.aim = input.right;
 };
 
 Game.prototype.getData = function() {
@@ -77,8 +75,8 @@ Game.prototype.tick = function(delta) {
   }
 };
 
-var WIDTH = 800;
-var HEIGHT = 600;
+var WIDTH = 1385;
+var HEIGHT = 692;
 
 var WALL_DEPTH = 1;
 var SHIP_WIDTH = 15;

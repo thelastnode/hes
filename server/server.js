@@ -19,7 +19,7 @@ var Server = function(connect_callback, line_callback, end_callback) {
       }
     });
 
-    socket.on('end', function() {
+    socket.on('close', function() {
       end_callback(uid);
       delete sockets[uid];
     });

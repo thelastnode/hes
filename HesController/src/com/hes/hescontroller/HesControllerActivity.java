@@ -51,7 +51,8 @@ public class HesControllerActivity extends Activity {
                     BufferedReader input = new BufferedReader(new InputStreamReader(s.getInputStream()));
                     while (!stopped) {
                     	sendNewMoves(bw);
-                    	receiveCommands(input);
+                    	if (s.getInputStream().available() > 0)
+                    		receiveCommands(input);
                     }
             } catch (UnknownHostException e) {
                     // TODO Auto-generated catch block
@@ -82,10 +83,12 @@ public class HesControllerActivity extends Activity {
 				boolean send = false;
 				if (joys.isInLeft(x, y)) {
 					send = true;
+					Log.d("HES", "Hit");
 					lx = joys.getLeftXCoord(x);
 					ly = joys.getLeftYCoord(y);
-				} else if (joys.isInLeft(x2, y2)) {
+				} else if (joys.isInLeft(x2, y2) && event.getPointerCount() > 1) {
 					send = true;
+					Log.d("HES", "Hit2");
 					lx = joys.getLeftXCoord(x2);
 					ly = joys.getLeftYCoord(y2);
 				}
@@ -93,7 +96,7 @@ public class HesControllerActivity extends Activity {
 					send = true;
 					rx = joys.getRightXCoord(x);
 					ry = joys.getRightYCoord(y);
-				} else if (joys.isInRight(x2, y2)) {
+				} else if (joys.isInRight(x2, y2) && event.getPointerCount() > 1) {
 					send = true;
 					rx = joys.getRightXCoord(x2);
 					ry = joys.getRightYCoord(y2);
@@ -122,23 +125,23 @@ public class HesControllerActivity extends Activity {
     
     
     public void sendNewMoves(BufferedWriter out) throws IOException {
-    	String s = "";
     	while (!buffer.isEmpty()) {
-    		s += Base64.encodeToString(buffer.remove(0).getBytes(), Base64.NO_WRAP) + "\n";
-    	}
-    	if (s.length() > 0) {
-    		out.write(s);
+    		out.write(Base64.encodeToString(buffer.remove(0).getBytes(), Base64.NO_WRAP) + "\n");
     		out.flush();
     	}
     }
     
     public void receiveCommands(BufferedReader br) throws IOException, JSONException {
     	String s = null;
+    	Log.d("HES", "ENTER");
     	if ((s = br.readLine()) != null) {
+    		Log.d("HES", s);
     		JSONObject j = new JSONObject(s);
-    		if (j.getInt("vibrate") == 1) {
-    			v.vibrate(1000);
+    		if (!j.isNull("vibrate")) {
+    			v.vibrate(j.getInt("vibrate"));
     		}
     	}
+    	Log.d("HES", "EXIT");
     }
+    
 }

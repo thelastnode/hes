@@ -8,7 +8,10 @@ var socket_io = require('socket.io');
 
 var routes = require('./routes');
 
-var server = require('./server');
+var Server = require('./server');
+var Game = require('./game');
+
+var game = new Game();
 
 var app = module.exports = express.createServer();
 
@@ -40,15 +43,21 @@ app.listen(3000, function(){
 });
 
 
-server.listen(4000);
-console.log("Game server listening on port %d", server.address().port);
+var server = new Server(function(id) {
+  game.connect(id);
+}, function(id, input) {
+  game.receiveInput(id, input);
+});
+(function(port) {
+  server.listen(port);
+  console.log("Game server listening on port %d", port);
+})(4000);
 
 var io = socket_io.listen(app);
-io.sockets.on('connection', function(socket) {
-  socket.on('reply', function(data) {
-    console.log('REPLY: %s', data);
-  });
-  setInterval(function() {
-    socket.emit('data', 'woop ' + Math.random());
-  }, 1000);
-});
+
+io.set('log level', 2);
+
+setInterval(function() {
+  io.sockets.emit('render', game.getData());
+  game.tick();
+}, 25);

@@ -1,11 +1,6 @@
 h1= title
 p Welcome to #{title}
 
-ul#data
+canvas#game(width="800", height="600", style="border: 1px black solid")
 
-script(type='text/javascript')
-  var socket = io.connect('http://localhost:3000/');
-  socket.on('data', function (data) {
-    $('#data').prepend($('<li>').text(data));
-    socket.emit('reply', 'heh ' + Math.random());
-  });
+script(src='/javascripts/game_client.js')

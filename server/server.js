@@ -1,22 +1,28 @@
 var net = require('net');
 var carrier = require('carrier');
+var uuid = require('node-uuid');
 
-var server = net.createServer(function(socket) {
-  console.log('CONNECT: %s', socket.address().address);
-  carrier.carry(socket, function(line) {
-    line = new Buffer(line, 'base64').toString('ascii');
-    console.log('LINE: %s', line);
-  });
+var Server = function(connect_callback, line_callback) {
+  this.server = net.createServer(function(socket) {
+    var uid = uuid.v4();
+    console.log('CONNECT: %s', socket.address().address);
+    carrier.carry(socket, function(line) {
+      line = new Buffer(line, 'base64').toString('ascii');
+      console.log('LINE: %s', line);
+      line_callback(uid, JSON.parse(line));
 
-  setTimeout(function() {
-    var line = JSON.stringify({
-      foo: 5,
-      bar: 'yay',
+      /*
+      if (JSON.parse(line).right) {
+        socket.write(new Buffer('{"vibrate": 20}', 'ascii').toString('ascii') + '\n');
+      }
+      */
     });
-    console.log('SEND: %s', line);
-    line = new Buffer(line).toString('base64');
-    socket.write(line + '\n');
-  }, 1000);
-});
+    connect_callback(uid);
+  });
+};
 
-module.exports = server;
+Server.prototype.listen = function(port) {
+  this.server.listen(port);
+};
+
+module.exports = Server;

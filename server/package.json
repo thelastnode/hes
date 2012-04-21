@@ -7,5 +7,6 @@
     , "jade": ">= 0.0.1"
     , "carrier": "0.x"
     , "socket.io": "0.x"
+    , "node-uuid": "1.x"
   }
 }

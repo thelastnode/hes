@@ -53,7 +53,7 @@ public class HesControllerActivity extends Activity {
             public void run() {
             while (!stopped) {
             	try {
-                    s = new Socket("128.61.27.16",4000);
+                    s = new Socket("143.215.105.147",4000);
                     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
                     BufferedReader input = new BufferedReader(new InputStreamReader(s.getInputStream()));
                     while (!stopped) {
@@ -61,6 +61,7 @@ public class HesControllerActivity extends Activity {
                     	if (s.getInputStream().available() > 0)
                     		receiveCommands(input);
                     }
+                    
             } catch (UnknownHostException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();

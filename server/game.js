@@ -1,7 +1,8 @@
 var User = function(x, y, color) {
   this.point = {x: x, y: y};
   this.velocity = {x: 0, y: 0};
-
+  this.aim = {x:0, y:0};
+  this.bullets = [];
   this.color = color || randomColor();
 };
 
@@ -15,13 +16,11 @@ Game.prototype.receiveInput = function(id, input) {
   if (input.left) {
     user.velocity = input.left;
   }
-  if (input.right) {
-    user.fireDir = input.right;
-  }
+  user.aim = input.right;
 };
 
 Game.prototype.getData = function() {
-  return this.users;
+  return this.users,
 };
 
 Game.prototype.connect = function(id) {
@@ -76,7 +75,23 @@ var WALL_DEPTH = 1;
 var SHIP_WIDTH = 15;
 
 var shipsCollide = function(x1, y1, x2, y2) {
+  if (x2 < x1) {
+    var tmp = x1;
+    x1 = x2;
+    x2 = tmp;
+    tmp = y1;
+    y1 = y2;
+    y2 = tmp; 
+  }
   if (x1 <= x2 && x2 <= x1 + SHIP_WIDTH) {
+    if (y2 < y1) {
+      var tmp = x1;
+      x1 = x2;
+      x2 = tmp;
+      tmp = y1;
+      y1 = y2;
+      y2 = tmp; 
+    }
     if (y1 <= y2 && y2 <= y1 + SHIP_WIDTH) {
       return true;
     }

@@ -11,6 +11,7 @@ import android.view.ViewGroup.LayoutParams;
 public class Joysticks extends View {
 	protected int radius = 150;
 	protected float width, height;
+	private int color = 0xFF0066ff;
 	private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 	
 	public Joysticks(Context c, AttributeSet as) {
@@ -27,7 +28,7 @@ public class Joysticks extends View {
 		super.onDraw(canvas);
 		width = canvas.getWidth();
 		height = canvas.getHeight();
-		paint.setColor(0xFF0066ff);
+		paint.setColor(color);
 		paint.setStyle(Paint.Style.FILL);
 		canvas.drawCircle(radius, canvas.getHeight() - radius, radius, paint);
 		canvas.drawCircle(canvas.getWidth() - radius, radius, radius, paint);
@@ -63,5 +64,10 @@ public class Joysticks extends View {
 	public float getRightYCoord(float y) {
 		float cX = width - radius, cY = radius;
 		return Math.min(1.0f, Math.max(-1.0f, -1*(y - cY) / radius));
+	}
+	
+	public void setColor(int color) {
+		this.color = color;
+		invalidate();
 	}
 }

@@ -4,6 +4,7 @@ var carrier = require('carrier');
 var server = net.createServer(function(socket) {
   console.log('CONNECT: %s', socket.address().address);
   carrier.carry(socket, function(line) {
+    line = new Buffer(line, 'base64').toString('ascii');
     console.log('LINE: %s', line);
   });
 

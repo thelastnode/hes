@@ -47,6 +47,8 @@ var server = new Server(function(id) {
   game.connect(id);
 }, function(id, input) {
   game.receiveInput(id, input);
+}, function(id) {
+  game.disconnect(id);
 });
 (function(port) {
   server.listen(port);

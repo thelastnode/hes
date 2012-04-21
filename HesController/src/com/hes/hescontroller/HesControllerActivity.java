@@ -17,6 +17,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.text.Html;
 import android.util.Base64;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -24,6 +25,7 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.hes.hescontroller.views.Joysticks;
 
@@ -31,6 +33,10 @@ public class HesControllerActivity extends Activity {
 	private boolean stopped = false;
 	private ArrayList<String> buffer = new ArrayList<String>();
 	private Vibrator v;
+	private TextView healthTv;
+	private TextView scoreTv;
+	private int health = 3;
+	private int score = 0;
 	
     /** Called when the activity is first created. */
     @Override
@@ -69,6 +75,10 @@ public class HesControllerActivity extends Activity {
         }).start();
         
         final Joysticks joys = (Joysticks) findViewById(R.id.joysticks);
+        healthTv = (TextView) findViewById(R.id.health);
+        healthTv.setText(Html.fromHtml("&#9829;&#9829;&#9829;").toString());
+        scoreTv = (TextView) findViewById(R.id.score);
+        scoreTv.setText("00000000");
         joys.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
 				Log.d("HES",""+event.getAction());
@@ -139,6 +149,22 @@ public class HesControllerActivity extends Activity {
     		JSONObject j = new JSONObject(s);
     		if (!j.isNull("vibrate")) {
     			v.vibrate(j.getInt("vibrate"));
+    		}
+    		if (!j.isNull("dhealth")) {
+    			health += j.getInt("dhealth");
+    			String str = "";
+    			for (int i = 0; i < health; i++) {
+    				str += "&#9829;";
+    			}
+    			healthTv.setText(str);
+    		}
+    		if (!j.isNull("dscore")) {
+    			score += j.getInt("dscore");
+    			String str = "" + score;
+    			for (int i = 0; i < str.length() - 8; i++) {
+    				str = "0" + str;
+    			}
+    			scoreTv.setText(str);
     		}
     	}
     	Log.d("HES", "EXIT");

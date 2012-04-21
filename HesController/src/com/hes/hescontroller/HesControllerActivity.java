@@ -51,9 +51,9 @@ public class HesControllerActivity extends Activity {
         new Thread(new Runnable() {
         	Socket s = null;
             public void run() {
-            while (true) {
+            while (!stopped) {
             	try {
-                    s = new Socket("143.215.105.147",4000);
+                    s = new Socket("128.61.27.16",4000);
                     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
                     BufferedReader input = new BufferedReader(new InputStreamReader(s.getInputStream()));
                     while (!stopped) {
@@ -71,6 +71,15 @@ public class HesControllerActivity extends Activity {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
             }
+            }
+            if (s != null) {
+            	try {
+            		Log.d("HES", "DISCONNECT");
+					s.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
           }
         }).start();
@@ -195,4 +204,15 @@ public class HesControllerActivity extends Activity {
     	Log.d("HES", "EXIT");
     }
     
+    @Override
+    protected void onPause(){
+       super.onPause();
+       stopped = true;
+    }
+    
+    @Override
+    protected void onResume(){
+       super.onPause();
+       stopped = false;
+    }
 }

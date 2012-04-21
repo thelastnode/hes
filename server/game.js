@@ -11,11 +11,13 @@ var Game = module.exports = function Game() {
 };
 
 Game.prototype.receiveInput = function(id, input) {
-  if (!input.left) {
-    return;
-  }
   var user = this.users[id];
-  user.velocity = input.left;
+  if (input.left) {
+    user.velocity = input.left;
+  }
+  if (input.right) {
+    user.fireDir = input.right;
+  }
 };
 
 Game.prototype.getData = function() {
@@ -57,6 +59,13 @@ Game.prototype.tick = function(delta) {
     if (absy > HEIGHT - WALL_DEPTH) {
       user.point = addV(user.point, {x: 0, y: HEIGHT - WALL_DEPTH - absy});
     }
+    
+    // check collisions between ships
+    for (var id2 in this.users) {
+      if (id != id2 && shipsCollide(absx, absy, WIDTH/2 + this.users[id2].point.x, HEIGHT/2 + this.users[id2].point.y)) {
+        console.log('COLLIDE');
+      }
+    }
   }
 };
 
@@ -66,6 +75,14 @@ var HEIGHT = 600;
 var WALL_DEPTH = 1;
 var SHIP_WIDTH = 15;
 
+var shipsCollide = function(x1, y1, x2, y2) {
+  if (x1 <= x2 && x2 <= x1 + SHIP_WIDTH) {
+    if (y1 <= y2 && y2 <= y1 + SHIP_WIDTH) {
+      return true;
+    }
+  } 
+  return false;
+}
 
 var addV = function(v1, v2) {
   return {

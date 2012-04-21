@@ -4,6 +4,9 @@ var User = function(x, y, color) {
   this.bullets = [];
   this.lastFired = new Date(0);
   this.color = color || randomColor();
+
+  this.score = 0;
+  this.health = 100;
 };
 
 
@@ -107,7 +110,20 @@ Game.prototype.tick = function(delta) {
       }
 
       // TODO: hit ships and shit
-    });
+      for (var id2 in this.users) {
+        if (id === id2) continue;
+
+        var user2 = this.users[id2];
+        if ((b.point.x >= user2.point.x)
+            && (b.point.x <= user2.point.x + SHIP_WIDTH)
+            && (b.point.y <= user2.point.y)
+            && (b.point.y + SHIP_WIDTH >= user2.point.y)) {
+          user.score += 100;
+          user2.health -= 3;
+          this.server.vibrate(id2, 1000);
+        }
+      }
+    }.bind(this));
   }
 };
 

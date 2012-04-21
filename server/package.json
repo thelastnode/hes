@@ -6,5 +6,6 @@
       "express": "2.x"
     , "jade": ">= 0.0.1"
     , "carrier": "0.x"
+    , "socket.io": "0.x"
   }
 }

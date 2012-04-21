@@ -1,2 +1,11 @@
 h1= title
 p Welcome to #{title}
+
+ul#data
+
+script(type='text/javascript')
+  var socket = io.connect('http://localhost:3000/');
+  socket.on('data', function (data) {
+    $('#data').prepend($('<li>').text(data));
+    socket.emit('reply', 'heh ' + Math.random());
+  });

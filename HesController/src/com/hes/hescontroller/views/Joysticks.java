@@ -30,6 +30,7 @@ public class Joysticks extends View {
 		paint.setColor(0xFFFF0000);
 		paint.setStyle(Paint.Style.FILL);
 		canvas.drawCircle(radius, canvas.getHeight() - radius, radius, paint);
+		paint.setColor(0xFFFF0000);
 		canvas.drawCircle(canvas.getWidth() - radius, radius, radius, paint);
 	}
 	
@@ -44,18 +45,22 @@ public class Joysticks extends View {
 	}
 	
 	public float getLeftXCoord(float x) {
-		return 0.0f;
+		float cX = radius, cY = height - radius;
+		return (x - cX) / radius;
 	}
 	
 	public float getLeftYCoord(float y) {
-		return 0.0f;
+		float cX = radius, cY = height - radius;
+		return -1*(y - cY) / radius;
 	}
 	
 	public float getRightXCoord(float x) {
-		return 0.0f;
+		float cX = width - radius, cY = radius;
+		return (x - cX) / radius;
 	}
 	
-	public float getRightYCoord(float x) {
-		return 0.0f;
+	public float getRightYCoord(float y) {
+		float cX = width - radius, cY = radius;
+		return -1*(y - cY) / radius;
 	}
 }

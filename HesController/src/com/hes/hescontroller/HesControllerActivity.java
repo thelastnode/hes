@@ -35,8 +35,7 @@ public class HesControllerActivity extends Activity {
         	Socket s = null;
             public void run() {
             	try {
-                    s = new Socket("10.0.2.2",4000);
-                    
+                    s = new Socket("143.215.105.147",4000);
                     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
                     while (!stopped) {
                     	sendNewMoves(bw);
@@ -62,27 +61,28 @@ public class HesControllerActivity extends Activity {
 					x2 = event.getX(1);
 					y2 = event.getY(1);
 				}
+				float lx = 0, ly = 0, rx = 0, ry = 0;
 				boolean send = false;
 				if (joys.isInLeft(x, y)) {
 					send = true;
-					x = joys.getLeftXCoord(x);
-					y = joys.getLeftYCoord(y);
+					lx = joys.getLeftXCoord(x);
+					ly = joys.getLeftYCoord(y);
 				} else if (joys.isInLeft(x2, y2)) {
 					send = true;
-					x2 = joys.getLeftXCoord(x2);
-					y2 = joys.getLeftYCoord(y2);
+					lx = joys.getLeftXCoord(x2);
+					ly = joys.getLeftYCoord(y2);
 				}
 				if (joys.isInRight(x, y)) {
 					send = true;
-					x = joys.getRightXCoord(x);
-					y = joys.getRightYCoord(y);
+					rx = joys.getRightXCoord(x);
+					ry = joys.getRightYCoord(y);
 				} else if (joys.isInRight(x2, y2)) {
 					send = true;
-					x2 = joys.getRightXCoord(x2);
-					y2 = joys.getRightYCoord(y2);
+					rx = joys.getRightXCoord(x2);
+					ry = joys.getRightYCoord(y2);
 				}
 				if (send) {
-					buffer.add(toCommand(x, y, x2, y2));
+					buffer.add(toCommand(lx, ly, rx, ry));
 				}
 				return false;
 			}

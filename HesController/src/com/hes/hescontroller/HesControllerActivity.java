@@ -1,15 +1,22 @@
 package com.hes.hescontroller;
 
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Base64;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -23,6 +30,8 @@ import com.hes.hescontroller.views.Joysticks;
 public class HesControllerActivity extends Activity {
 	private boolean stopped = false;
 	private ArrayList<String> buffer = new ArrayList<String>();
+	private Vibrator v;
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,15 +39,20 @@ public class HesControllerActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.main);
+        v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         
         new Thread(new Runnable() {
         	Socket s = null;
             public void run() {
+            while (true) {
             	try {
                     s = new Socket("143.215.105.147",4000);
                     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
+                    BufferedReader input = new BufferedReader(new InputStreamReader(s.getInputStream()));
                     while (!stopped) {
                     	sendNewMoves(bw);
+                    	if (s.getInputStream().available() > 0)
+                    		receiveCommands(input);
                     }
             } catch (UnknownHostException e) {
                     // TODO Auto-generated catch block
@@ -46,6 +60,10 @@ public class HesControllerActivity extends Activity {
             } catch (IOException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
+            } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+            }
             }
           }
         }).start();
@@ -65,10 +83,12 @@ public class HesControllerActivity extends Activity {
 				boolean send = false;
 				if (joys.isInLeft(x, y)) {
 					send = true;
+					Log.d("HES", "Hit");
 					lx = joys.getLeftXCoord(x);
 					ly = joys.getLeftYCoord(y);
-				} else if (joys.isInLeft(x2, y2)) {
+				} else if (joys.isInLeft(x2, y2) && event.getPointerCount() > 1) {
 					send = true;
+					Log.d("HES", "Hit2");
 					lx = joys.getLeftXCoord(x2);
 					ly = joys.getLeftYCoord(y2);
 				}
@@ -76,7 +96,7 @@ public class HesControllerActivity extends Activity {
 					send = true;
 					rx = joys.getRightXCoord(x);
 					ry = joys.getRightYCoord(y);
-				} else if (joys.isInRight(x2, y2)) {
+				} else if (joys.isInRight(x2, y2) && event.getPointerCount() > 1) {
 					send = true;
 					rx = joys.getRightXCoord(x2);
 					ry = joys.getRightYCoord(y2);
@@ -110,4 +130,18 @@ public class HesControllerActivity extends Activity {
     		out.flush();
     	}
     }
+    
+    public void receiveCommands(BufferedReader br) throws IOException, JSONException {
+    	String s = null;
+    	Log.d("HES", "ENTER");
+    	if ((s = br.readLine()) != null) {
+    		Log.d("HES", s);
+    		JSONObject j = new JSONObject(s);
+    		if (!j.isNull("vibrate")) {
+    			v.vibrate(j.getInt("vibrate"));
+    		}
+    	}
+    	Log.d("HES", "EXIT");
+    }
+    
 }

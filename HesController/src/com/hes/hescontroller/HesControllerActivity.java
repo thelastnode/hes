@@ -152,7 +152,8 @@ public class HesControllerActivity extends Activity {
     public void receiveCommands(BufferedReader br) throws IOException, JSONException {
     	String s = null;
     	Log.d("HES", "ENTER");
-    	while ((s = br.readLine()) != null) {
+    	while (br.ready() && (s = br.readLine()) != null) {
+    		Log.d("HES", "TARGET: " + s);
     		Log.d("HES", s);
     		final JSONObject j = new JSONObject(s);
     		if (!j.isNull("vibrate")) {

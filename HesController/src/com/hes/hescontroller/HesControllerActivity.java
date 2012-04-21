@@ -36,7 +36,7 @@ public class HesControllerActivity extends Activity {
 	private TextView healthTv;
 	private TextView scoreTv;
 	private Joysticks joys;
-	private int health = 3;
+	private int health = 0;
 	private int score = 0;
 	
     /** Called when the activity is first created. */
@@ -87,7 +87,6 @@ public class HesControllerActivity extends Activity {
         
         joys = (Joysticks) findViewById(R.id.joysticks);
         healthTv = (TextView) findViewById(R.id.health);
-        healthTv.setText(Html.fromHtml("&#9829;&#9829;&#9829;").toString());
         scoreTv = (TextView) findViewById(R.id.score);
         scoreTv.setText("00000000");
         joys.setOnTouchListener(new OnTouchListener() {

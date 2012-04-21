@@ -53,7 +53,7 @@ public class HesControllerActivity extends Activity {
         final Joysticks joys = (Joysticks) findViewById(R.id.joysticks);
         joys.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
-				Log.d("HES", "TOUCH EVENT");
+				Log.d("HES",""+event.getAction());
 				float x = event.getX(0);
 				float y = event.getY(0);
 				float x2 = 0, y2 = 0;
@@ -84,7 +84,7 @@ public class HesControllerActivity extends Activity {
 				if (send) {
 					buffer.add(toCommand(lx, ly, rx, ry));
 				}
-				return false;
+				return !false;
 			}
         });
     }

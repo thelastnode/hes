@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[GMServerComms readInputStream]:GMServerComms.m">
+      </ContextState>
+      <ContextState
+         contextName = "+[GMServerUpdate parseUpdate:]:GMServerUpdate.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[NSError localizedDescription]">
+            </PersistentString>
+            <PersistentString
+               value = "[part length]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

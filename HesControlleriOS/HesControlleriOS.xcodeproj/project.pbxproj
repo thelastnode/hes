@@ -22,20 +22,20 @@
 		872998AB15432DE2006179E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8729988915432DE2006179E3 /* Foundation.framework */; };
 		872998B315432DE2006179E3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 872998B115432DE2006179E3 /* InfoPlist.strings */; };
 		872998B615432DE2006179E3 /* HesControlleriOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 872998B515432DE2006179E3 /* HesControlleriOSTests.m */; };
-		872998D415432E28006179E3 /* AnimationLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = 872998C115432E28006179E3 /* AnimationLoop.m */; };
-		872998D515432E28006179E3 /* Bullseye.m in Sources */ = {isa = PBXBuildFile; fileRef = 872998C315432E28006179E3 /* Bullseye.m */; };
-		872998D615432E28006179E3 /* Circle.m in Sources */ = {isa = PBXBuildFile; fileRef = 872998C515432E28006179E3 /* Circle.m */; };
-		872998D715432E28006179E3 /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 872998C715432E28006179E3 /* Color.m */; };
-		872998D815432E28006179E3 /* DrawingLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 872998C915432E28006179E3 /* DrawingLib.m */; };
-		872998D915432E28006179E3 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 872998CB15432E28006179E3 /* Image.m */; };
-		872998DA15432E28006179E3 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = 872998CD15432E28006179E3 /* Line.m */; };
-		872998DB15432E28006179E3 /* Rectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 872998CF15432E28006179E3 /* Rectangle.m */; };
-		872998DC15432E28006179E3 /* Shape.m in Sources */ = {isa = PBXBuildFile; fileRef = 872998D115432E28006179E3 /* Shape.m */; };
-		872998DD15432E28006179E3 /* UICanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 872998D315432E28006179E3 /* UICanvasView.m */; };
 		872998E0154368C1006179E3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 872998DF154368C1006179E3 /* QuartzCore.framework */; };
 		872998E7154370E8006179E3 /* GMServerComms.m in Sources */ = {isa = PBXBuildFile; fileRef = 872998E6154370E8006179E3 /* GMServerComms.m */; };
 		872998EB1543A825006179E3 /* GMServerUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 872998EA1543A825006179E3 /* GMServerUpdate.m */; };
 		879AE59D15451FD1006D47BC /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 879AE59C15451FD1006D47BC /* NSData+Base64.m */; };
+		87D4572C154AEF8B00C5D464 /* AnimationLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D45718154AEF8B00C5D464 /* AnimationLoop.m */; };
+		87D4572D154AEF8B00C5D464 /* Bullseye.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D4571A154AEF8B00C5D464 /* Bullseye.m */; };
+		87D4572E154AEF8B00C5D464 /* Circle.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D4571C154AEF8B00C5D464 /* Circle.m */; };
+		87D4572F154AEF8B00C5D464 /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D4571E154AEF8B00C5D464 /* Color.m */; };
+		87D45730154AEF8B00C5D464 /* DrawingLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D45721154AEF8B00C5D464 /* DrawingLib.m */; };
+		87D45731154AEF8B00C5D464 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D45723154AEF8B00C5D464 /* Image.m */; };
+		87D45732154AEF8B00C5D464 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D45725154AEF8B00C5D464 /* Line.m */; };
+		87D45733154AEF8B00C5D464 /* Rectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D45727154AEF8B00C5D464 /* Rectangle.m */; };
+		87D45734154AEF8B00C5D464 /* Shape.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D45729154AEF8B00C5D464 /* Shape.m */; };
+		87D45735154AEF8B00C5D464 /* UICanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D4572B154AEF8B00C5D464 /* UICanvasView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,6 @@
 
 /* Begin PBXFileReference section */
 		871C88FF1544B2AC00C9BF79 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		871C89021544B82C00C9BF79 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
 		8729988315432DE2006179E3 /* HesControlleriOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HesControlleriOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8729988715432DE2006179E3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8729988915432DE2006179E3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -71,27 +70,6 @@
 		872998B215432DE2006179E3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		872998B415432DE2006179E3 /* HesControlleriOSTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HesControlleriOSTests.h; sourceTree = "<group>"; };
 		872998B515432DE2006179E3 /* HesControlleriOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HesControlleriOSTests.m; sourceTree = "<group>"; };
-		872998BF15432E28006179E3 /* AnimationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationDelegate.h; path = ../../DrawingLib/DrawingLib/AnimationDelegate.h; sourceTree = "<group>"; };
-		872998C015432E28006179E3 /* AnimationLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationLoop.h; path = ../../DrawingLib/DrawingLib/AnimationLoop.h; sourceTree = "<group>"; };
-		872998C115432E28006179E3 /* AnimationLoop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationLoop.m; path = ../../DrawingLib/DrawingLib/AnimationLoop.m; sourceTree = "<group>"; };
-		872998C215432E28006179E3 /* Bullseye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bullseye.h; path = ../../DrawingLib/DrawingLib/Bullseye.h; sourceTree = "<group>"; };
-		872998C315432E28006179E3 /* Bullseye.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bullseye.m; path = ../../DrawingLib/DrawingLib/Bullseye.m; sourceTree = "<group>"; };
-		872998C415432E28006179E3 /* Circle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Circle.h; path = ../../DrawingLib/DrawingLib/Circle.h; sourceTree = "<group>"; };
-		872998C515432E28006179E3 /* Circle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Circle.m; path = ../../DrawingLib/DrawingLib/Circle.m; sourceTree = "<group>"; };
-		872998C615432E28006179E3 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Color.h; path = ../../DrawingLib/DrawingLib/Color.h; sourceTree = "<group>"; };
-		872998C715432E28006179E3 /* Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Color.m; path = ../../DrawingLib/DrawingLib/Color.m; sourceTree = "<group>"; };
-		872998C815432E28006179E3 /* DrawingLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawingLib.h; path = ../../DrawingLib/DrawingLib/DrawingLib.h; sourceTree = "<group>"; };
-		872998C915432E28006179E3 /* DrawingLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawingLib.m; path = ../../DrawingLib/DrawingLib/DrawingLib.m; sourceTree = "<group>"; };
-		872998CA15432E28006179E3 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Image.h; path = ../../DrawingLib/DrawingLib/Image.h; sourceTree = "<group>"; };
-		872998CB15432E28006179E3 /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Image.m; path = ../../DrawingLib/DrawingLib/Image.m; sourceTree = "<group>"; };
-		872998CC15432E28006179E3 /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Line.h; path = ../../DrawingLib/DrawingLib/Line.h; sourceTree = "<group>"; };
-		872998CD15432E28006179E3 /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Line.m; path = ../../DrawingLib/DrawingLib/Line.m; sourceTree = "<group>"; };
-		872998CE15432E28006179E3 /* Rectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rectangle.h; path = ../../DrawingLib/DrawingLib/Rectangle.h; sourceTree = "<group>"; };
-		872998CF15432E28006179E3 /* Rectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Rectangle.m; path = ../../DrawingLib/DrawingLib/Rectangle.m; sourceTree = "<group>"; };
-		872998D015432E28006179E3 /* Shape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shape.h; path = ../../DrawingLib/DrawingLib/Shape.h; sourceTree = "<group>"; };
-		872998D115432E28006179E3 /* Shape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Shape.m; path = ../../DrawingLib/DrawingLib/Shape.m; sourceTree = "<group>"; };
-		872998D215432E28006179E3 /* UICanvasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UICanvasView.h; path = ../../DrawingLib/DrawingLib/UICanvasView.h; sourceTree = "<group>"; };
-		872998D315432E28006179E3 /* UICanvasView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UICanvasView.m; path = ../../DrawingLib/DrawingLib/UICanvasView.m; sourceTree = "<group>"; };
 		872998DF154368C1006179E3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		872998E5154370E8006179E3 /* GMServerComms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMServerComms.h; sourceTree = "<group>"; };
 		872998E6154370E8006179E3 /* GMServerComms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMServerComms.m; sourceTree = "<group>"; };
@@ -99,6 +77,27 @@
 		872998EA1543A825006179E3 /* GMServerUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMServerUpdate.m; sourceTree = "<group>"; };
 		879AE59B15451FD1006D47BC /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		879AE59C15451FD1006D47BC /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		87D45716154AEF8B00C5D464 /* AnimationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationDelegate.h; path = DrawingLib/AnimationDelegate.h; sourceTree = SOURCE_ROOT; };
+		87D45717154AEF8B00C5D464 /* AnimationLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationLoop.h; path = DrawingLib/AnimationLoop.h; sourceTree = SOURCE_ROOT; };
+		87D45718154AEF8B00C5D464 /* AnimationLoop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationLoop.m; path = DrawingLib/AnimationLoop.m; sourceTree = SOURCE_ROOT; };
+		87D45719154AEF8B00C5D464 /* Bullseye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bullseye.h; path = DrawingLib/Bullseye.h; sourceTree = SOURCE_ROOT; };
+		87D4571A154AEF8B00C5D464 /* Bullseye.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bullseye.m; path = DrawingLib/Bullseye.m; sourceTree = SOURCE_ROOT; };
+		87D4571B154AEF8B00C5D464 /* Circle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Circle.h; path = DrawingLib/Circle.h; sourceTree = SOURCE_ROOT; };
+		87D4571C154AEF8B00C5D464 /* Circle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Circle.m; path = DrawingLib/Circle.m; sourceTree = SOURCE_ROOT; };
+		87D4571D154AEF8B00C5D464 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Color.h; path = DrawingLib/Color.h; sourceTree = SOURCE_ROOT; };
+		87D4571E154AEF8B00C5D464 /* Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Color.m; path = DrawingLib/Color.m; sourceTree = SOURCE_ROOT; };
+		87D45720154AEF8B00C5D464 /* DrawingLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawingLib.h; path = DrawingLib/DrawingLib.h; sourceTree = SOURCE_ROOT; };
+		87D45721154AEF8B00C5D464 /* DrawingLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawingLib.m; path = DrawingLib/DrawingLib.m; sourceTree = SOURCE_ROOT; };
+		87D45722154AEF8B00C5D464 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Image.h; path = DrawingLib/Image.h; sourceTree = SOURCE_ROOT; };
+		87D45723154AEF8B00C5D464 /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Image.m; path = DrawingLib/Image.m; sourceTree = SOURCE_ROOT; };
+		87D45724154AEF8B00C5D464 /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Line.h; path = DrawingLib/Line.h; sourceTree = SOURCE_ROOT; };
+		87D45725154AEF8B00C5D464 /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Line.m; path = DrawingLib/Line.m; sourceTree = SOURCE_ROOT; };
+		87D45726154AEF8B00C5D464 /* Rectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rectangle.h; path = DrawingLib/Rectangle.h; sourceTree = SOURCE_ROOT; };
+		87D45727154AEF8B00C5D464 /* Rectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Rectangle.m; path = DrawingLib/Rectangle.m; sourceTree = SOURCE_ROOT; };
+		87D45728154AEF8B00C5D464 /* Shape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shape.h; path = DrawingLib/Shape.h; sourceTree = SOURCE_ROOT; };
+		87D45729154AEF8B00C5D464 /* Shape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Shape.m; path = DrawingLib/Shape.m; sourceTree = SOURCE_ROOT; };
+		87D4572A154AEF8B00C5D464 /* UICanvasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UICanvasView.h; path = DrawingLib/UICanvasView.h; sourceTree = SOURCE_ROOT; };
+		87D4572B154AEF8B00C5D464 /* UICanvasView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UICanvasView.m; path = DrawingLib/UICanvasView.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +131,6 @@
 			children = (
 				871C88FF1544B2AC00C9BF79 /* AudioToolbox.framework */,
 				872998DF154368C1006179E3 /* QuartzCore.framework */,
-				872998DE15432E37006179E3 /* DrawingLib */,
 				8729988D15432DE2006179E3 /* HesControlleriOS */,
 				872998AE15432DE2006179E3 /* HesControlleriOSTests */,
 				8729988615432DE2006179E3 /* Frameworks */,
@@ -163,6 +161,7 @@
 		8729988D15432DE2006179E3 /* HesControlleriOS */ = {
 			isa = PBXGroup;
 			children = (
+				87D45712154AEF1900C5D464 /* DrawingLib */,
 				879AE59B15451FD1006D47BC /* NSData+Base64.h */,
 				879AE59C15451FD1006D47BC /* NSData+Base64.m */,
 				8729989615432DE2006179E3 /* GMAppDelegate.h */,
@@ -176,7 +175,6 @@
 				872998E6154370E8006179E3 /* GMServerComms.m */,
 				872998E91543A825006179E3 /* GMServerUpdate.h */,
 				872998EA1543A825006179E3 /* GMServerUpdate.m */,
-				871C89021544B82C00C9BF79 /* NSStringAdditions.h */,
 			);
 			path = HesControlleriOS;
 			sourceTree = "<group>";
@@ -211,30 +209,30 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		872998DE15432E37006179E3 /* DrawingLib */ = {
+		87D45712154AEF1900C5D464 /* DrawingLib */ = {
 			isa = PBXGroup;
 			children = (
-				872998BF15432E28006179E3 /* AnimationDelegate.h */,
-				872998C015432E28006179E3 /* AnimationLoop.h */,
-				872998C115432E28006179E3 /* AnimationLoop.m */,
-				872998C215432E28006179E3 /* Bullseye.h */,
-				872998C315432E28006179E3 /* Bullseye.m */,
-				872998C415432E28006179E3 /* Circle.h */,
-				872998C515432E28006179E3 /* Circle.m */,
-				872998C615432E28006179E3 /* Color.h */,
-				872998C715432E28006179E3 /* Color.m */,
-				872998C815432E28006179E3 /* DrawingLib.h */,
-				872998C915432E28006179E3 /* DrawingLib.m */,
-				872998CA15432E28006179E3 /* Image.h */,
-				872998CB15432E28006179E3 /* Image.m */,
-				872998CC15432E28006179E3 /* Line.h */,
-				872998CD15432E28006179E3 /* Line.m */,
-				872998CE15432E28006179E3 /* Rectangle.h */,
-				872998CF15432E28006179E3 /* Rectangle.m */,
-				872998D015432E28006179E3 /* Shape.h */,
-				872998D115432E28006179E3 /* Shape.m */,
-				872998D215432E28006179E3 /* UICanvasView.h */,
-				872998D315432E28006179E3 /* UICanvasView.m */,
+				87D45716154AEF8B00C5D464 /* AnimationDelegate.h */,
+				87D45717154AEF8B00C5D464 /* AnimationLoop.h */,
+				87D45718154AEF8B00C5D464 /* AnimationLoop.m */,
+				87D45719154AEF8B00C5D464 /* Bullseye.h */,
+				87D4571A154AEF8B00C5D464 /* Bullseye.m */,
+				87D4571B154AEF8B00C5D464 /* Circle.h */,
+				87D4571C154AEF8B00C5D464 /* Circle.m */,
+				87D4571D154AEF8B00C5D464 /* Color.h */,
+				87D4571E154AEF8B00C5D464 /* Color.m */,
+				87D45720154AEF8B00C5D464 /* DrawingLib.h */,
+				87D45721154AEF8B00C5D464 /* DrawingLib.m */,
+				87D45722154AEF8B00C5D464 /* Image.h */,
+				87D45723154AEF8B00C5D464 /* Image.m */,
+				87D45724154AEF8B00C5D464 /* Line.h */,
+				87D45725154AEF8B00C5D464 /* Line.m */,
+				87D45726154AEF8B00C5D464 /* Rectangle.h */,
+				87D45727154AEF8B00C5D464 /* Rectangle.m */,
+				87D45728154AEF8B00C5D464 /* Shape.h */,
+				87D45729154AEF8B00C5D464 /* Shape.m */,
+				87D4572A154AEF8B00C5D464 /* UICanvasView.h */,
+				87D4572B154AEF8B00C5D464 /* UICanvasView.m */,
 			);
 			name = DrawingLib;
 			sourceTree = "<group>";
@@ -284,7 +282,7 @@
 		8729987A15432DE2006179E3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = 8729987D15432DE2006179E3 /* Build configuration list for PBXProject "HesControlleriOS" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -349,19 +347,19 @@
 				8729989415432DE2006179E3 /* main.m in Sources */,
 				8729989815432DE2006179E3 /* GMAppDelegate.m in Sources */,
 				872998A115432DE2006179E3 /* GMViewController.m in Sources */,
-				872998D415432E28006179E3 /* AnimationLoop.m in Sources */,
-				872998D515432E28006179E3 /* Bullseye.m in Sources */,
-				872998D615432E28006179E3 /* Circle.m in Sources */,
-				872998D715432E28006179E3 /* Color.m in Sources */,
-				872998D815432E28006179E3 /* DrawingLib.m in Sources */,
-				872998D915432E28006179E3 /* Image.m in Sources */,
-				872998DA15432E28006179E3 /* Line.m in Sources */,
-				872998DB15432E28006179E3 /* Rectangle.m in Sources */,
-				872998DC15432E28006179E3 /* Shape.m in Sources */,
-				872998DD15432E28006179E3 /* UICanvasView.m in Sources */,
 				872998E7154370E8006179E3 /* GMServerComms.m in Sources */,
 				872998EB1543A825006179E3 /* GMServerUpdate.m in Sources */,
 				879AE59D15451FD1006D47BC /* NSData+Base64.m in Sources */,
+				87D4572C154AEF8B00C5D464 /* AnimationLoop.m in Sources */,
+				87D4572D154AEF8B00C5D464 /* Bullseye.m in Sources */,
+				87D4572E154AEF8B00C5D464 /* Circle.m in Sources */,
+				87D4572F154AEF8B00C5D464 /* Color.m in Sources */,
+				87D45730154AEF8B00C5D464 /* DrawingLib.m in Sources */,
+				87D45731154AEF8B00C5D464 /* Image.m in Sources */,
+				87D45732154AEF8B00C5D464 /* Line.m in Sources */,
+				87D45733154AEF8B00C5D464 /* Rectangle.m in Sources */,
+				87D45734154AEF8B00C5D464 /* Shape.m in Sources */,
+				87D45735154AEF8B00C5D464 /* UICanvasView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
